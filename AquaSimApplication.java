@@ -124,15 +124,24 @@ public class AquaSimApplication
 
     }//end main
     public static Color getColor(){
-        int randNum = generator.nextInt(3);
+        int randNum = generator.nextInt(6);
         if (randNum == 0){
             return Color.RED;
         }
         else if (randNum == 1){
             return Color.BLUE;
         }
-        else{
+        else if (randNum == 2){
             return Color.GREEN;
+        }
+        else if (randNum == 3){
+            return Color.YELLOW;
+        }
+        else if (randNum == 4){
+            return Color.MAGENTA;
+        }
+        else {
+            return Color.ORANGE;
         }
         
 
