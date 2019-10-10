@@ -21,13 +21,14 @@ public class AquaSimApplication
      *  This is the main function.  It executes the program.
      *  @param    String args[] is never used
      **/
+     private static Random generator;
     public static void main(String args[])
     {
         System.out.println("Welcome to Fish Simulator");
 
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
-        Random generator = new Random();
-       // int randNum = generator.nextInt(10);
+        generator = new Random();
+       //int randNum = generator.nextInt(10);
 
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua;                 // create reference to an Aquarium ...
@@ -35,30 +36,29 @@ public class AquaSimApplication
 
         // Construct fish and add them to the aquarium.
         //      CODE MISSING HERE!
-        AquaFish Bob = new AquaFish(aqua, Color.RED);
+      
+            
+        AquaFish Bob = new AquaFish(aqua, getColor());
         aqua.add(Bob);
         
-        
-        
-        
-        AquaFish Nemo = new AquaFish(aqua, Color.BLUE);
+    
+   
+    
+        AquaFish Nemo = new AquaFish(aqua, getColor());
         aqua.add(Nemo);
+    
+        AquaFish Girl = new AquaFish(aqua, getColor());
+        aqua.add(Girl);
         
         
-        
-        
-        AquaFish Slushi = new AquaFish(aqua, Color.BLUE);
+        AquaFish Slushi = new AquaFish(aqua, getColor());
         aqua.add(Slushi);
-        Slushi.color();
         
+        AquaFish Boy = new AquaFish(aqua, getColor());
+        aqua.add(Boy);
         
-        
-        
-        
-        
-        
-        
-        
+        AquaFish Hah = new AquaFish(aqua, getColor());
+        aqua.add(Hah);
 
         // Construct a graphical user interface (GUI) to display and control
         // the simulation.  The user interface needs to know about the
@@ -96,6 +96,22 @@ public class AquaSimApplication
                 if(Bob.atWall()){
                     Bob.changeDir();
                 }
+                Boy.moveForward();
+                if(Boy.atWall()){
+                    Boy.changeDir();
+                }
+                Girl.moveForward();
+                if(Girl.atWall()){
+                    Girl.changeDir();
+                }
+                Hah.moveForward();
+                if(Hah.atWall()){
+                    Hah.changeDir();
+                }
+
+                
+
+
 
                 userInterface.showAquarium();
     }
@@ -107,5 +123,18 @@ public class AquaSimApplication
         userInterface.println ("Close GUI display window to quit.");
 
     }//end main
+    public static Color getColor(){
+        int randNum = generator.nextInt(3);
+        if (randNum == 0){
+            return Color.RED;
+        }
+        else if (randNum == 1){
+            return Color.BLUE;
+        }
+        else{
+            return Color.GREEN;
+        }
+        
 
+}
 }//end class
