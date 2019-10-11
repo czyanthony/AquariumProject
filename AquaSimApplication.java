@@ -21,6 +21,7 @@ public class AquaSimApplication
      *  This is the main function.  It executes the program.
      *  @param    String args[] is never used
      **/
+     
      private static Random generator;
     public static void main(String args[])
     {
@@ -64,7 +65,7 @@ public class AquaSimApplication
         // the simulation.  The user interface needs to know about the
         // aquarium, so we pass aqua to the user interface constructor.
         AquaSimGUI userInterface;              // create reference to GUI ...
-        userInterface = new AquaSimGUI(aqua);  // ... and then GUI itself
+        userInterface = new AquaSimGUI(aqua, true);  // ... and then GUI itself
 
         // Tell the user how to start the aquarium simulation.
         System.out.println("Press the Start button to start the simulation.");
@@ -77,11 +78,27 @@ public class AquaSimApplication
 
 
         // RUN THE AQUARIUM SIMULATION.
+        
 
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
-        for (int i=1; i<=10; i++){
-            for ( i=10; i>=1; i--){
+       
+        
+        
+       int b = userInterface.getNumberOfSteps();
+        
+        for (int i=1; i<=b; i++){
+                int change = generator.nextInt(4);
+                if(change==1){
+                    Nemo.changeDir();
+                    Slushi.changeDir();
+                }
+                else if(change == 2){
+                    Bob.changeDir();
+                    Girl.changeDir();
+                    Boy.changeDir();
+                    Hah.changeDir();
+                }
                 Slushi.moveForward();
                 if (Slushi.atWall()){
                     Slushi.changeDir();
@@ -114,7 +131,7 @@ public class AquaSimApplication
 
 
                 userInterface.showAquarium();
-    }
+    
 }
 
         // WRAP UP.
